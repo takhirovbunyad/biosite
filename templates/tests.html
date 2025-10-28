@@ -1,0 +1,41 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ book.title }} - Test</title>
+    <link rel="stylesheet" href="{% static 'css/tests.css' %}">
+</head>
+<body>
+    <header class="header">
+        <h1 class="page-title">🧠 {{ book.title }} — Test</h1>
+        <a href="{% url 'books' %}" class="back-btn">⬅️ Orqaga</a>
+    </header>
+
+    <main class="test-container">
+        <!-- Test sarlavhasi -->
+        <h2 class="test-title"></h2>
+
+        <!-- Savol va variantlar joyi -->
+        <div id="question-container" class="question-box"></div>
+        <div id="options-container" class="options-box"></div>
+
+        <!-- Tugmalar -->
+        <div class="btn-area">
+            <p id="progress" class="progress-text"></p>
+            <button id="next-btn" class="submit-btn">Keyingi</button>
+        </div>
+
+        <!-- Natija oynasi -->
+        <div id="resultBox" class="result-box" style="display:none;">
+            <h2>Natija:</h2>
+            <p id="scoreText"></p>
+            <button id="retryBtn" class="retry-btn">🔁 Qayta ishlash</button>
+        </div>
+    </main>
+
+    <script src="{% static 'js/tests.js' %}"></script>
+</body>
+</html>

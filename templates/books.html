@@ -1,0 +1,85 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kitoblar</title>
+    <link rel="stylesheet" href="{% static 'css/books.css' %}">
+</head>
+<body>
+    <header class="header">
+        <h1 class="page-title">📚 Kitoblar ro‘yxati</h1>
+    </header>
+
+    <main class="book-container">
+        {% for book in books %}
+        <div class="book-card" data-book-id="{{ book.id }}" data-title="{{ book.title }}" data-file-url="{{ book.file.url }}">
+            <img src="{{ book.cover_image.url }}" alt="{{ book.title }}" class="book-cover">
+            <h3 class="book-title">{{ book.title }}</h3>
+        </div>
+        {% empty %}
+        <p>Hozircha kitoblar mavjud emas.</p>
+        {% endfor %}
+    </main>
+
+    <!-- ========== Modal ========== -->
+    <div id="bookModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2 id="modalTitle"></h2>
+
+            <div class="modal-actions">
+                <button id="readBtn" class="action-btn">📖 O‘qish</button>
+                <a id="openFullBtn" href="#" target="_blank" class="action-btn">🗂️ To‘liq ochish</a>
+                <a id="testLink" href="#" class="action-btn">🧠 Test ishlash</a>
+                <a id="highlightLink" href="#" class="action-btn">🖍️ Belgilangan joylar</a>
+            </div>
+
+            <div id="pdfContainer" class="pdf-viewer" style="display: none;">
+                <iframe id="pdfFrame" src="" frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== Script ========== -->
+    <script>
+        const modal = document.getElementById("bookModal");
+        const closeBtn = document.querySelector(".close-btn");
+        const pdfContainer = document.getElementById("pdfContainer");
+        const pdfFrame = document.getElementById("pdfFrame");
+        const openFullBtn = document.getElementById("openFullBtn");
+
+        document.querySelectorAll(".book-card").forEach(card => {
+            card.addEventListener("click", () => {
+                const title = card.getAttribute("data-title");
+                const fileUrl = card.getAttribute("data-file-url");
+                const bookId = card.getAttribute("data-book-id");
+
+                document.getElementById("modalTitle").textContent = title;
+                pdfFrame.src = "";
+                pdfContainer.style.display = "none";
+
+                document.getElementById("testLink").href = `/books/${bookId}/test/`;
+                document.getElementById("highlightLink").href = `/books/${bookId}/highlights/`;
+                openFullBtn.href = fileUrl || "#"; // yangi tab uchun
+
+                modal.style.display = "flex";
+
+                document.getElementById("readBtn").onclick = () => {
+                    if (fileUrl) {
+                        pdfFrame.src = fileUrl;
+                        pdfContainer.style.display = "block";
+                    } else {
+                        alert("Bu kitobda fayl mavjud emas.");
+                    }
+                };
+            });
+        });
+
+        closeBtn.onclick = () => modal.style.display = "none";
+        window.onclick = e => { if (e.target === modal) modal.style.display = "none"; };
+    </script>
+</body>
+</html>

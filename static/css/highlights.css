@@ -1,0 +1,484 @@
+/* ================================================
+   HIGHLIGHTS PAGE FULL RESPONSIVE STYLE SHEET
+   Designed for Bitnet 🗿
+   ================================================ */
+
+/* ===============================
+   RESET & BASE CONFIG
+   =============================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+  background: linear-gradient(135deg, #eef4ff, #f5f8ff);
+  color: #1a1a1a;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: background 0.4s ease, color 0.4s ease;
+  overflow-x: hidden;
+}
+
+/* ===============================
+   THEME VARIABLES
+   =============================== */
+:root {
+  --primary: #2d7efb;
+  --primary-dark: #1d63c7;
+  --accent: #ffc107;
+  --bg-light: #ffffff;
+  --bg-dark: #0e1117;
+  --text-light: #f5f5f5;
+  --text-dark: #1e1e1e;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  --radius: 12px;
+}
+
+/* ===============================
+   HEADER
+   =============================== */
+.header {
+  background: var(--bg-light);
+  box-shadow: var(--shadow);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 2rem;
+  border-radius: 0 0 var(--radius) var(--radius);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: 0.3s ease;
+}
+
+.header.scrolled {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+}
+
+.page-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+  letter-spacing: 0.5px;
+}
+
+/* ===============================
+   BACK BUTTON
+   =============================== */
+.back-btn {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: #fff;
+  border: none;
+  text-decoration: none;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  transition: 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.25);
+}
+
+.back-btn:hover {
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+  transform: translateY(-2px);
+  box-shadow: 0 5px 12px rgba(0, 123, 255, 0.35);
+}
+
+.back-btn:active {
+  transform: scale(0.96);
+}
+
+/* ===============================
+   CONTAINER & MAIN AREA
+   =============================== */
+.container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 1.5rem 2rem;
+  background: var(--bg-light);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: 0.4s ease;
+}
+
+.container:hover {
+  transform: scale(1.002);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* ===============================
+   QUOTES GRID
+   =============================== */
+#highlight-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+/* ===============================
+   QUOTE CARD
+   =============================== */
+.quote-card {
+  background: #f9fbff;
+  border-left: 6px solid var(--primary);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.quote-card:hover {
+  transform: translateY(-5px);
+  background: #f1f6ff;
+  box-shadow: 0 8px 20px rgba(0, 123, 255, 0.15);
+}
+
+/* Decorative quotation mark */
+.quote-card::before {
+  content: "❝";
+  position: absolute;
+  font-size: 3.5rem;
+  color: rgba(0, 123, 255, 0.1);
+  top: 10px;
+  left: 15px;
+  z-index: 0;
+}
+
+.quote-text {
+  font-style: italic;
+  font-size: 1.1rem;
+  color: #333;
+  position: relative;
+  z-index: 1;
+  line-height: 1.6;
+}
+
+.quote-author {
+  text-align: right;
+  margin-top: 0.8rem;
+  font-weight: 600;
+  color: var(--primary-dark);
+  z-index: 1;
+}
+
+/* ===============================
+   RELOAD BUTTON
+   =============================== */
+.reload-btn {
+  display: block;
+  margin: 2rem auto 0;
+  background: linear-gradient(135deg, #ffb300, #ff9800);
+  color: #fff;
+  border: none;
+  padding: 0.9rem 1.6rem;
+  font-size: 1rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(255, 152, 0, 0.25);
+}
+
+.reload-btn:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, #ffa000, #ff6f00);
+  box-shadow: 0 6px 15px rgba(255, 111, 0, 0.35);
+}
+
+.reload-btn:active {
+  transform: scale(0.96);
+}
+
+/* ===============================
+   DARK MODE SUPPORT
+   =============================== */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: linear-gradient(135deg, #111, #1a1a1a);
+    color: var(--text-light);
+  }
+
+  .header {
+    background: #1c1f26;
+    box-shadow: none;
+  }
+
+  .page-title {
+    color: #63a4ff;
+  }
+
+  .container {
+    background: #181a20;
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+  }
+
+  .quote-card {
+    background: #20232a;
+    border-left-color: #63a4ff;
+    color: #ddd;
+  }
+
+  .quote-text {
+    color: #e0e0e0;
+  }
+
+  .quote-author {
+    color: #90caf9;
+  }
+
+  .reload-btn {
+    background: linear-gradient(135deg, #ff9800, #ff6f00);
+    box-shadow: 0 4px 15px rgba(255, 152, 0, 0.3);
+  }
+}
+
+/* ===============================
+   SCROLLBAR STYLING
+   =============================== */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--primary), var(--primary-dark));
+  border-radius: 10px;
+}
+
+/* ===============================
+   RESPONSIVE DESIGN
+   =============================== */
+@media (max-width: 1024px) {
+  .page-title {
+    font-size: 1.6rem;
+  }
+
+  .container {
+    padding: 1.2rem 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    gap: 0.6rem;
+    text-align: center;
+  }
+
+  .page-title {
+    font-size: 1.4rem;
+  }
+
+  .back-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.95rem;
+  }
+
+  #highlight-container {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 0.5rem;
+  }
+
+  .container {
+    padding: 1rem;
+    margin: 1rem auto;
+  }
+
+  .page-title {
+    font-size: 1.2rem;
+  }
+
+  .quote-text {
+    font-size: 1rem;
+  }
+
+  .quote-author {
+    font-size: 0.9rem;
+  }
+
+  .reload-btn {
+    width: 100%;
+    font-size: 0.95rem;
+  }
+}
+
+/* ===============================
+   ACCESSIBILITY IMPROVEMENTS
+   =============================== */
+.back-btn:focus,
+.reload-btn:focus {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* ===============================
+   SMOOTH ANIMATIONS
+   =============================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.quote-card {
+  animation: fadeIn 0.4s ease forwards;
+}
+
+/* ===============================
+   EMPTY STATE MESSAGE
+   =============================== */
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #777;
+  font-style: italic;
+  font-size: 1.1rem;
+}
+
+/* ===============================
+   TRANSITIONS ON SCROLL
+   =============================== */
+.fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===============================
+   FLOATING BACKGROUND EFFECT
+   =============================== */
+body::before {
+  content: "";
+  position: fixed;
+  top: -100px;
+  left: -100px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle at center, rgba(45,126,251,0.15), transparent 70%);
+  animation: floatMove 12s infinite ease-in-out alternate;
+  z-index: -1;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  bottom: -120px;
+  right: -120px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle at center, rgba(255,193,7,0.1), transparent 70%);
+  animation: floatMove2 16s infinite ease-in-out alternate;
+  z-index: -1;
+}
+
+@keyframes floatMove {
+  from { transform: translate(0, 0) scale(1); }
+  to { transform: translate(40px, 40px) scale(1.1); }
+}
+
+@keyframes floatMove2 {
+  from { transform: translate(0, 0) scale(1); }
+  to { transform: translate(-40px, -40px) scale(1.05); }
+}
+
+/* ===============================
+   PRINT STYLE (BONUS)
+   =============================== */
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .header, .reload-btn {
+    display: none;
+  }
+  .quote-card {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+}
+
+/* ===============================
+   END OF STYLE 🗿
+   =============================== */
+/* ===============================
+   HIGHLIGHT AJRATUVCHI CHIZIQ 🎨
+   =============================== */
+
+#highlight-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+  margin-top: 2rem;
+}
+
+/* Har bir highlight */
+.quote-card {
+  padding: 1.4rem 1.7rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.quote-card:hover {
+  background: #fffef6;
+  transform: translateY(-2px);
+}
+
+/* Ajratib turuvchi chiziq (light sariq gradient) */
+.quote-card:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  bottom: -0.9rem;
+  left: 10%;
+  width: 80%;
+  height: 2px;
+  background: linear-gradient(to right, transparent, #fde68a, transparent);
+  border-radius: 2px;
+}
+
+/* Matn */
+.quote-text {
+  font-size: 1.05rem;
+  color: #222;
+  line-height: 1.6;
+}
+
+/* Sahifa raqami */
+.quote-page {
+  text-align: right;
+  font-size: 0.9rem;
+  color: #888;
+  margin-top: 0.8rem;
+}
