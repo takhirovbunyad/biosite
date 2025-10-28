@@ -1,0 +1,227 @@
+/* === BODY === */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f7f9fc;
+    margin: 0;
+    padding: 0;
+}
+
+/* === HEADER === */
+.header {
+    text-align: center;
+    padding: 10px 0; /* Avval 20px edi — kamaytirdik */
+    background: #2a2d3e;
+    color: white;
+    font-size: 1.4rem;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px; /* pastdagi bo‘shliqni kamaytirdik */
+}
+
+/* === BOOK GRID === */
+.book-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 20px; /* oldingi 40px o‘rniga 20 */
+    max-width: 1300px;
+    margin: auto;
+    justify-items: center;
+}
+
+/* === BOOK CARD === */
+.book-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    border: 1px solid #eee;
+    width: 210px;
+    min-height: 340px;
+}
+
+.book-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+.book-cover {
+    width: 100%;
+    height: 240px; /* oldingi 280px edi */
+    object-fit: cover;
+    border-bottom: 1px solid #eee;
+}
+
+.book-title {
+    padding: 10px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #2a2d3e;
+}
+
+/* === MODAL === */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+    padding: 15px;
+}
+
+/* === MODAL CONTENT === */
+.modal-content {
+    background: white;
+    padding: 25px;
+    border-radius: 14px;
+    width: 90%;
+    max-width: 800px;
+    position: relative;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    animation: modalFade 0.25s ease;
+}
+
+@keyframes modalFade {
+    from { transform: scale(0.95); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* === CLOSE BUTTON === */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 18px;
+    font-size: 22px;
+    cursor: pointer;
+    color: #555;
+    transition: color 0.3s;
+}
+
+.close-btn:hover {
+    color: #000;
+}
+
+/* === MODAL TEXTS === */
+.modal h2 {
+    margin: 10px 0;
+    color: #2a2d3e;
+    font-size: 1.4rem;
+    text-align: center;
+}
+
+.modal p {
+    line-height: 1.5;
+    color: #333;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+/* === PDF VIEWER === */
+.pdf-viewer {
+    margin-top: 15px;
+    height: 500px;
+}
+
+.pdf-viewer iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 10px;
+}
+
+/* === BUTTONS IN MODAL === */
+.modal-actions {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+    width: 100%;
+}
+
+.action-btn {
+    background: #2a2d3e;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 0.95rem;
+    text-align: center;
+    transition: background 0.3s ease, transform 0.2s ease;
+    white-space: normal; /* uzun matn joylashadi */
+    word-break: break-word; /* uzun so‘zlar bo‘linadi */
+}
+
+.action-btn:hover {
+    background: #1f2230;
+    transform: translateY(-2px);
+}
+
+/* === SCROLLBAR STYLE === */
+.modal-content::-webkit-scrollbar {
+    width: 8px;
+}
+.modal-content::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 10px;
+}
+.modal-content::-webkit-scrollbar-thumb:hover {
+    background: #999;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 992px) {
+    .book-container {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+    }
+    .book-card {
+        width: 190px;
+    }
+    .pdf-viewer {
+        height: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    .book-container {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 15px;
+    }
+    .book-card {
+        width: 100%;
+    }
+    .pdf-viewer {
+        height: 350px;
+    }
+}
+
+@media (max-width: 480px) {
+    .book-container {
+        grid-template-columns: 1fr;
+    }
+    .header {
+        font-size: 1.2rem;
+        padding: 8px 0;
+    }
+    .book-card {
+        width: 100%;
+        min-height: auto;
+    }
+    .modal-content {
+        padding: 16px;
+    }
+    .pdf-viewer {
+        height: 300px;
+    }
+}

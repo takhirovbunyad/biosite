@@ -1,0 +1,138 @@
+/* ===============================
+   TEST PAGE STYLES
+=============================== */
+body {
+  font-family: "Inter", sans-serif;
+  background: #f4f6fa;
+  margin: 0;
+  padding: 0;
+  color: #222;
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #1e3a8a;
+  color: #fff;
+  padding: 1rem 2rem;
+}
+
+.page-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.back-btn {
+  color: #fff;
+  text-decoration: none;
+  background: #2563eb;
+  padding: 0.4rem 1rem;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.back-btn:hover {
+  background: #1d4ed8;
+}
+
+/* Asosiy konteyner */
+.test-container {
+  max-width: 700px;
+  margin: 3rem auto;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.test-title {
+  text-align: center;
+  color: #1e3a8a;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+/* Savol qutisi */
+.question-box {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  background: #eff6ff;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+/* Variantlar qutisi */
+.options-box {
+  display: flex;
+  flex-direction: column; /* <<< MUHIM: pastma-past chiqadi */
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Har bir variant tugmasi */
+.option-btn {
+  background: #f1f5f9;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.3s ease;
+}
+
+.option-btn:hover {
+  background: #dbeafe;
+  border-color: #3b82f6;
+}
+
+.option-btn.selected {
+  background: #3b82f6;
+  color: #fff;
+  border-color: #1e40af;
+}
+
+/* Tugmalar qismi */
+.btn-area {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.submit-btn, .retry-btn {
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.5rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+.submit-btn:hover, .retry-btn:hover {
+  background: #1e40af;
+}
+
+/* Natija */
+.result-box {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.progress-text {
+  font-weight: 600;
+  color: #334155;
+}
+
+
+.option-btn {
+  transition: background 0.3s ease, color 0.3s ease;
+}
+.option-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.9;
+}
